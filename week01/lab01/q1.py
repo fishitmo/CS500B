@@ -28,9 +28,6 @@ for i, ch in enumerate(str_input):
    if i == len(str_input)-1 and ch != ".":
        result += "."
    
-   # if ch == str_input[-1] and ch != ".":  
-   #    result +="." 
-     
 # print the result string
 print("The output is", result)    
     
