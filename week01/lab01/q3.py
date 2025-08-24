@@ -14,8 +14,8 @@ while True:
     hours = float(input("Enter the number of hours worked:"))
     if hours <= REG_HOURS:
         gross_pay = hours * REG_WAGE
-    elif hours <= 45:
-        gross_pay = (REG_HOURS*REG_WAGE) + ((45-hours)*FIRST_5H_OT)
+    elif hours <= REG_HOURS + 5:
+        gross_pay = (REG_HOURS*REG_WAGE) + ((hours-REG_HOURS)*FIRST_5H_OT)
     else:
         gross_pay = (REG_HOURS*REG_WAGE) + (5*FIRST_5H_OT) + ((hours-45)*OVER_45H_OT)   
     # claculate taxes and net_pay
