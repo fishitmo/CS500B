@@ -13,7 +13,7 @@ str_input = input("Please enter a string: ")
 
 for i in range(len(str_input) // 2):
     if str_input[i] != str_input[len(str_input)-1-i]:
-        print(f"{str_input} is a not a palindrome.")
+        print(f"{str_input} is not a palindrome.")
         break
     elif i == (len(str_input) // 2) - 1:
         print(f"{str_input} is a palindrome.")
