@@ -1,4 +1,19 @@
 # print the program title
+"""
+Question 3:
+
+A video store has multiple employees who worked different hours last week. Both employees earn a base rate of $14.50 per hour for the first 40 hours. Overtime pay is calculated differently: for the first five hours exceeding 40 hours, they receive time-and-a-half pay (1.5 times the base rate) and for any hours beyond that, they get double-time pay (twice the base rate). Taking a 28% tax rate into account, write a Python program that prompts the user to enter their hours worked. The program should then calculate and display the employee's gross pay (total earnings before taxes), taxes withheld, and net pay (gross pay minus taxes) with clear labels and comments throughout the code.
+
+Enter the number of hours worked: 48
+
+Employee Pay Summary
+
+Gross Pay: $775.75
+Taxes Withheld (28%): $217.21
+Net Pay: $558.54
+
+Do you have another employee (yes/no)?
+"""
 
 print("QUestion 3: A Simple Payrole System")
 
