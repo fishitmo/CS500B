@@ -54,25 +54,28 @@ if show_day == 'w':
    child_tickets_price = child_tickets* child_tickets_price_w
    senior_tickets_price = senior_tickets * senior_tickets_price_w
    
-   print(f"Adult Tickets (x{adult_tickets}): ${adult_tickets_price_w:.2f} each")
-   print(f"Child Tickets (x{child_tickets}): ${child_tickets_price_w:.2f} each")
-   print(f"Senior Tickets (x{senior_tickets}): ${senior_tickets_price_w:.2f} each")
+   print(f"Adult Tickets (x{adult_tickets}): ${adult_tickets_price_w if adult_tickets > 0 else 0 :.2f} each")
+   print(f"Child Tickets (x{child_tickets}): ${child_tickets_price_w if child_tickets > 0 else 0 :.2f} each")
+   print(f"Senior Tickets (x{senior_tickets}): ${senior_tickets_price_w if senior_tickets > 0 else 0 :.2f} each")
 elif show_day == 'e' or show_day == 'h':
     adult_tickets_price = adult_tickets* adult_tickets_price_e_h
     child_tickets_price = child_tickets* child_tickets_price_e_h
     senior_tickets_price = senior_tickets * senior_tickets_price_e_h
-    print(f"Adult Tickets (x{adult_tickets}): ${adult_tickets_price_e_h:.2f} each")
-    print(f"Child Tickets (x{child_tickets}): ${child_tickets_price_e_h:.2f} each")
-    print(f"Senior Tickets (x{senior_tickets}): ${senior_tickets_price_e_h:.2f} each")
+    print(f"Adult Tickets (x{adult_tickets}): ${adult_tickets_price_e_h if adult_tickets > 0 else 0 :.2f} each")
+    print(f"Child Tickets (x{child_tickets}): ${child_tickets_price_e_h if child_tickets > 0 else 0:.2f} each")
+    print(f"Senior Tickets (x{senior_tickets}): ${senior_tickets_price_e_h if senior_tickets > 0 else 0:.2f} each")
 
 # Claculate the total ticket price
 subtotal_tickets_price = adult_tickets_price + child_tickets_price + senior_tickets_price
 
 # Apply discount if 5 or more tickets are purchased
 total_tickets = adult_tickets + child_tickets + senior_tickets
+discount=0
 if total_tickets >=5:
     discount = subtotal_tickets_price * discount_percent/100
     total_tickets_price = subtotal_tickets_price - discount
+else:
+    total_tickets_price = subtotal_tickets_price
 print("\n")
 print(f"Subtotal: ${subtotal_tickets_price:.2f}")
 print(f"Discount (5+ tickets): {(discount_percent):.2f}%")
@@ -81,6 +84,7 @@ print(f"Discount amount : ${discount}")
 print(f"\nTotal: ${total_tickets_price:.2f}")
 
 print("\nThank you for coming to the movies!")
+
 
 
 
