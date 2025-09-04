@@ -39,7 +39,7 @@ def main():
     while True:
         word = input("Enter a word:")
         
-        if word == "Exit":
+        if word == "Exit" or word == "exit":
             break
         
         words.append(word)
