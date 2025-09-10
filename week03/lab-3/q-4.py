@@ -14,7 +14,13 @@ def main():
         cont = input("Do you have another student to survey (y/n)? ")
         if cont == "n":
             break
-    print(votes)    
+    # Print the formatted table
+    print()  # Empty line for spacing
+    print(f"{'':12}{'Like':>4}  {'Dislike':>7}")
+    
+    for i in range(len(menu)):
+        print(f"{menu[i]:12}{votes[i][0]:>4}  {votes[i][1]:>7}")
+    # print(votes)    
 
 if __name__ == "__main__":
     main()
