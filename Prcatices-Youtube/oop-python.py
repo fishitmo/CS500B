@@ -15,59 +15,59 @@
 # com2.config()        
 
 
-class Computer:
-    def __init__(self):
-        self.name = "Fsehaye"
-        self.age = 35
+# class Computer:
+#     def __init__(self):
+#         self.name = "Fsehaye"
+#         self.age = 35
         
-    def update(self):
-        self.age = 36
+#     def update(self):
+#         self.age = 36
         
-    def compare(self, other):
-        if self.age == other.age:
-            return True
-        else: 
-            return False
+#     def compare(self, other):
+#         if self.age == other.age:
+#             return True
+#         else: 
+#             return False
         
         
 
-c1 = Computer()
-c2 = Computer()
-c1.update()
+# c1 = Computer()
+# c2 = Computer()
+# c1.update()
 
-if c1.compare(c2):
-    print("They are the same")
-else:
-    print("They are different")
+# if c1.compare(c2):
+#     print("They are the same")
+# else:
+#     print("They are different")
     
     
 
-'''
-when we talk about variables in oop, ther are two types of variables:
-    1. Instance Variables
-    2. Class(Static) Variables
-'''
+# '''
+# when we talk about variables in oop, ther are two types of variables:
+#     1. Instance Variables
+#     2. Class(Static) Variables
+# '''
 
 
-class Car:
+# class Car:
     
-    # if you define a varibale outside the class , it is called a class variable
+#     # if you define a varibale outside the class , it is called a class variable
     
-    wheels = 4    # class namespace
+#     wheels = 4    # class namespace
     
-    def __init__(self):
+#     def __init__(self):
         
-        '''
-        if you define a varibale inside the class, it is called instance variable 
-        '''
-        self.mil= 10           # instance namespace
-        self.com = "BMW"       # instance namespace
+#         '''
+#         if you define a varibale inside the class, it is called instance variable 
+#         '''
+#         self.mil= 10           # instance namespace
+#         self.com = "BMW"       # instance namespace
         
 
-c1 = Car()
-c2 = Car()
+# c1 = Car()
+# c2 = Car()
 
-c1.mil = 8
+# c1.mil = 8
 
 '''
 
@@ -78,13 +78,13 @@ namespace is an area where you create and store object/varibale
 
 '''
 
-Car.wheels = 5
+# Car.wheels = 5
 
-# print(c1.mil, c1.com)
-# print(c2.mil, c2.com)
+# # print(c1.mil, c1.com)
+# # print(c2.mil, c2.com)
 
-print(c1.mil, c1.wheels)
-print(c2.mil, c2.wheels)
+# print(c1.mil, c1.wheels)
+# print(c2.mil, c2.wheels)
 
 
 
@@ -125,47 +125,77 @@ when we talk about methods in oop, there are three types of methods:
 
 
 
-class Student:
-    school = "SFBU"
+# class Student:
+#     school = "SFBU"
     
-    def __init__(self, m1, m2, m3):
-        self.m1 = m1
-        self.m2 = m2
-        self.m3 = m3
-    # avg is an instance method 
-    def avg(self): # if you are working with instance variables then you need to pass self as a parameter in the method
-        return (self.m1 + self.m2 + self.m3)/3  
+#     def __init__(self, m1, m2, m3):
+#         self.m1 = m1
+#         self.m2 = m2
+#         self.m3 = m3
+#     # avg is an instance method 
+#     def avg(self): # if you are working with instance variables then you need to pass self as a parameter in the method
+#         return (self.m1 + self.m2 + self.m3)/3  
      
-    # get_m1 is an accessor
-    def get_m1(self): # if you are working with instance variables then you need to pass self as a parameter in the method
-        return self.m1
+#     # get_m1 is an accessor
+#     def get_m1(self): # if you are working with instance variables then you need to pass self as a parameter in the method
+#         return self.m1
     
-    # set_m1 is a mutator
-    def set_m1(self, value): # if you are working with instance variables then you need to pass self as a parameter in the method
-        self.m1 = value
+#     # set_m1 is a mutator
+#     def set_m1(self, value): # if you are working with instance variables then you need to pass self as a parameter in the method
+#         self.m1 = value
      
-     # info is a class method
-     # if you want to create a class method then you need to use a special symbol or way of doing it called decorator   
-    @classmethod
-    def get_school(cls): # if you are working with class variables then you need to pass cls as a parameter in the method
-        return cls.school
-    # info is a static method
-    # this method is not dependent on any instance or class variables
-    # if you want to create a static method then you need to use a special symbol or way of doing it called decorator
-    @staticmethod
-    def info():
-        print("This is student class .. in abc module")
+#      # info is a class method
+#      # if you want to create a class method then you need to use a special symbol or way of doing it called decorator   
+#     @classmethod
+#     def get_school(cls): # if you are working with class variables then you need to pass cls as a parameter in the method
+#         return cls.school
+#     # info is a static method
+#     # this method is not dependent on any instance or class variables
+#     # if you want to create a static method then you need to use a special symbol or way of doing it called decorator
+#     @staticmethod
+#     def info():
+#         print("This is student class .. in abc module")
     
 
-s1 = Student(50, 60 , 70)
-s2 = Student(80, 90, 100)
+# s1 = Student(50, 60 , 70)
+# s2 = Student(80, 90, 100)
 
-print(s1.avg())
-print(s2.avg())
+# print(s1.avg())
+# print(s2.avg())
 
-print(Student.get_school())
-print(Student.info())
+# print(Student.get_school())
+# print(Student.info())
 
 
 
 # Start the next with Inner class in python @ 51:13
+
+
+# Inner class in python
+
+class Student:
+    def __init__(self, name, rollno):
+        self.name = name
+        self.rollno = rollno
+        self.lap = self.Laptop()
+        
+    def show(self):
+        print(self.name, self.rollno)
+        self.lap.show()
+        
+    class Laptop:
+        
+        def __init__(self):
+            self.brand = "Lenovo"
+            self.cpu = "Ryzen 3"
+            self.ram = 32
+            
+        def show(self):
+            print(self.brand, self.cpu, self.ram)
+            
+
+s1 = Student("Fsehaye", 1)
+s2 = Student("Flix", 2)
+
+s1.show()
+
