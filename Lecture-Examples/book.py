@@ -18,3 +18,8 @@ b2.title = "Advanced C"
 print("After b2.title = 'Advanced C'")
 print('b2=', str(b2))
 print()
+
+
+b2.set_title("Advanced C")
+print("b2.set_title('Advanced C')")
+print('b2=', str(b2))

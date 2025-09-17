@@ -77,6 +77,10 @@ class OrderItem:
     def quantity(self, quantity) -> None:
         self.__quantity = quantity
         
+    @property
+    def total_value(self) -> float:
+        return self.__product.price * self.__quantity
+        
 class Order:
     
     def __init__(self, oredrid: int, customer: Customer) -> None:
@@ -87,7 +91,12 @@ class Order:
     def __str__(self) -> str:
         output: str = f"Order id= {self.__oredrid}\n"
         output += f"Customer= {self.__customer}\n"
-        output += f"Item Product= {self.__order_items}"
+        # output += f"Item Product= {self.__order_items}"
+        if not self.__order_items:
+            output += "No items in the order.\n"
+        else:
+            for item in self.__order_items:
+                output += f"{item}\n"
         
         return output
         
@@ -112,7 +121,7 @@ class Order:
                 self.__order_items.pop(i)
                 return
     def find_largest_item(self) -> OrderItem | None:
-        largest_item: None
+        largest_item = None
         for item in self.__order_items:
             if largest_item is None:
                 largest_item = item
@@ -124,6 +133,10 @@ class Order:
         for item in self.__order_items:
             total_value += item.total_value
         return total_value
+    def get_discount_value(self, discount_rate: float):
+        total = self.get_total_value()
+        discount = total * discount_rate
+        return total - discount
         
 def main():
     p1= Product(111, "Hammer", 30.90)
@@ -159,7 +172,8 @@ def main():
     
     print(order.get_total_value())
     
-    
+    print("Total without discount:", order.get_total_value())
+    print("Total with discount:", order.get_discount_value(0.1))
     # c2 = Customer("Jane Doe", "456 Main St, San Francisco, CA 94109")
     # item = OrderItem(p1, 100)
     

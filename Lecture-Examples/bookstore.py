@@ -23,3 +23,5 @@ class Book:
         
     def __str__(self):
         return self.__title + "," + str(self.__author) + "," + str(self.price)
+    
+    
