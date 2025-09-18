@@ -9,16 +9,12 @@ class Room:
     def type(self)-> str:
         return self.__type
     
-    @type.setter
-    def type(self, type: str)-> None:
-        self.__type = type
+    
         
     @property
     def size(self) -> int:
         return self.__size
-    @size.setter
-    def size(self, size: int)-> None:
-        self.__size = size
+    
         
     def __str__(self) -> str:
         return f"Room: Type: {self.__type}, Size: {self.__size} sq.ft"
@@ -36,24 +32,18 @@ class Garage:
     def type(self)-> str:
         return self.__type
     
-    @type.setter
-    def type(self, type: str)-> None:
-        self.__type = type
+    
         
     @property
     def size(self) -> int:
         return self.__size
-    @size.setter
-    def size(self, size: int)-> None:
-        self.__size = size
+   
     
     @property
     def door_type(self)-> str:
         return self.__door_type
     
-    @door_type.setter
-    def door_type(self, door_type: str)-> None:
-        self.__door_type = door_type
+    
         
     def __str__(self) -> str:
         return f"Garage: Type: {self.__type}, Size: {self.__size} sq.ft, Door Type: {self.__door_type}"
@@ -72,9 +62,7 @@ class Television:
     def screen_type(self)-> str:
         return self.__screen_type
     
-    @screen_type.setter
-    def screen_type(self, screen_type: str) -> None:
-        self.__screen_type = screen_type
+    
     
     @property
     def screen_size(self) -> int:
@@ -96,9 +84,7 @@ class Television:
     def price(self) -> float:
         return self.__price
     
-    @price.setter
-    def price(self, price: float) -> None:
-        self.__price = price
+    
         
     def __str__(self) -> str:
         return f"Television: Screen Type: {self.__screen_type}, Screen Size: {self.__screen_size}, Resolution: {self.__resolution}, Price: {self.__price}"
@@ -107,12 +93,14 @@ class Television:
 
 
 class House:
-    def __init__(self, address: str, square_feet: int, garage: Garage, rooms: list[Room], televisions: list[Television]) -> None:
+    def __init__(self, address: str, square_feet: int, garage_type: str, size: int, door_type: str, room_data: list[tuple[str, int]]) -> None:
          self.__address = address
          self.__square_feet = square_feet
-         self.__garage = garage
-         self.__rooms = rooms
-         self.__televisions = televisions
+         self.__garage = Garage(garage_type, size, door_type)
+         self.__rooms = []
+         for room_type, size in room_data:
+             self.__rooms.append(Room(room_type, size))
+         self.__televisions = []
          
     @property
     def address(self)-> str:
@@ -129,29 +117,7 @@ class House:
     def square_feet(self, square_feet: int)-> None:
         self.__square_feet = square_feet
         
-    @property
-    def garage(self)-> Garage:
-        return self.__garage
-    
-    @garage.setter
-    def garage(self, garage: Garage)-> None:
-        self.__garage = garage
-        
-    @property
-    def rooms(self)-> list:
-        return self.__rooms
-    
-    @rooms.setter
-    def rooms(self, rooms: list[Room])-> None:
-        self.__rooms = rooms
-    
-    @property
-    def televisions(self)-> list:
-        return self.__televisions
-    
-    @televisions.setter
-    def televisions(self, televisions: list[Television])-> None:
-        self.__televisions = televisions
+   
         
     # Tv management
     def add_television(self, television: Television)-> None:
@@ -230,14 +196,35 @@ class House:
     
 def main():
     
-    g1 = Garage("double", 400, "auto")
-    r1 = Room("Bedroom", 200)
-    r2 = Room("Kitchen", 150)
-    r3 = Room("Living Room", 300)
-    tv1 = Television("OLED", 65, "4K", 1200.0)
-    tv2 = Television("LCD", 55, "1080p", 600.0)
+    room_info = [
+        ("Living Room", 300),
+        ("Bedroom", 200),
+        ("Kitchen", 150),
+        ("Bathroom", 120)
+            ]
+    house1 = House("123 Main St", 2000, 
+              garage_type="double", size=400, door_type="automatic",
+              room_data=room_info)
+    house1.add_television(Television("OLED", 65, "4K", 1200))
+    house1.add_television(Television("LCD", 55, "1080p", 600))
+    house1.add_television(Television("OLED", 65, "4K", 1200))
+    house1.add_television(Television("OLED", 65, "4K", 1200))
     
-    house1 = House("123 Main St", 2000, g1, [r1, r2, r3], [tv1, tv2])
+    print(house1)
+    
+    house2 = House("456 Elm St", 3000, 
+              garage_type="double", size=400, door_type="automatic",
+              room_data=room_info)
+    house2.add_television(Television("OLED", 65, "4K", 1200))
+    house2.add_television(Television("OLED", 65, "4K", 1200))
+    house2.add_television(Television("OLED", 65, "4K", 1200))
+    house2.add_television(Television("OLED", 65, "4K", 1200))
+    # remove a television
+    # house2.remove_television(Television("OLED", 65, "4K", 1200))
+    
+    print(house2)
+    
+    print("Similar Houses:", house1.is_similar_house(house2))
     
     
     # biggest room
@@ -246,6 +233,7 @@ def main():
     # get OLED televisions
     print("OLED Televisions:", house1.get_oled_televisions())
     
+    print("Similar Houses:", house1.is_similar_house(house2))
 
 if __name__ == "__main__":
     main()
