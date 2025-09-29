@@ -615,11 +615,6 @@ class MenuInterface:
         """
         Get user input with a prompt.
         
-        Args:
-            prompt (str): Prompt message
-            
-        Returns:
-            str: User input
         """
         return input(prompt).strip()
     
@@ -635,8 +630,8 @@ class MenuInterface:
         program = self.get_input("Enter program applied for: ")
         
         # Generate ID and create application
-        app_id = f"APP-{self.system._next_id:03d}"
-        self.system._next_id += 1
+        app_id = f"APP-{self.system.__next_id:03d}"
+        self.system.__next_id += 1
         
         try:
             application = Application(app_id, name, contact, email, address, program)
