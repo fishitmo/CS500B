@@ -18,20 +18,20 @@ class ClassB(ClassA):
           ClassA.__init__(self, a, b, c)
           self._d = d # protected attribute
           
-    # This part should be the error part of the code, it is supposed to be _method_d , since it comments as a protected method
+   
     def method_d(self): # protected method
         print("method_d =", self._d)
-    # This part should be the error part of the code too, it is supposed to be _method_test , since it comments as a protected method    
+   
     def method_test(self): # protected method 
         # These two attribute are allowed 
         print("a =", self.a)
         print("b =", self._b)
-        print("c =", self.__c)
+        # print("c =", self.__c)  # This is a private attribute and should have access only by class A
         
         # these two method calls are allowed
         ClassA.method_a(self)
         ClassA._method_b(self)
-        ClassA.__method_c(self)
+        # ClassA.__method_c(self)  # This is a private method and should have access only with in class A
         
 def main():
     bobj = ClassB(2, 4, 6, 8)
