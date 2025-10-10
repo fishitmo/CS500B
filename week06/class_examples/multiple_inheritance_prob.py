@@ -46,6 +46,7 @@ def main():
     ta = TA("John", 3.5, 50000)
     ta.dowork()
     ta.display()
+    print(TA.mro())
     
 if __name__ == "__main__":
     main()

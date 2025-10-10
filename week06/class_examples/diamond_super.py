@@ -1,38 +1,52 @@
-class Student:
-    def __init__(self, name, gpa):
+
+class Person:
+    def __init__(self, name):
         self.name = name
+        
+    def dowork(self):
+        print("Person", self.name, "doing nothing")
+        
+    def display(self):
+        print("Person: name =", self.name)
+
+class Student(Person):
+    def __init__(self, name, gpa):
+        Person.__init__(self, name)
         self.gpa = gpa
         
     
     def dowork(self):
+        super().dowork()
         print("Student", self.name, "doing homework")
         
     def display(self):
-        print("Name =", self.name)
-        print("GPA =", self.gpa)
+        super().display()
+        print("Student: GPA =", self.gpa)
 
 
 
 
-class Teacher:
+class Teacher(Person):
     def __init__(self, name, salary, project):
-        self.name = name
+        Person.__init__(self, name)
         self.salary = salary
         self.project = project
     
         
     def dowork(self):
+        super().dowork()
         print("Teacher", self.name, "teaching classes")
         
     def display(self):
-        print("Name =", self.name)
+        super().display()
         print("Salary =", self.salary)
         print("Project =", self.project)
         
 class TA(Teacher, Student):
     def __init__(self, name, gpa, salary, project):        
-        # super().__init__(name, gpa) # TypeError: __init__() missing 1 required positional argument: 'project'
-        super().__init__(name,salary, project)
+        
+        Teacher.__init__(self, name,salary, project)
+        Student.__init__(self, name, gpa)
         
     def dowork(self):
         super().dowork()
@@ -40,12 +54,19 @@ class TA(Teacher, Student):
         
     def display(self):
         super().display()
+        
+        
 def main():
   
     
     ta = TA("John", 3.5, 50000, 'MAX5')
     ta.dowork()
     ta.display()
+    print()
+    # ta.name = "Lily"
+    # print()
+    # ta.display()
+    # print()
     
 if __name__ == "__main__":
     main()

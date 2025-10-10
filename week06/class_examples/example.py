@@ -5,13 +5,13 @@ class Product:
     
 class Phone(Product):
     def __init__(self, name: str, price: int, network: str) -> None:
-        Product.__init__(name, price)
+        Product.__init__(self, name, price)
         # super().__init__(name, price)
         self.__network = network
         
 class Computer(Product):
     def __init__(self, name: str, price: int, speed: int) -> None:
-        Product.__init__(name, price)
+        Product.__init__(self,name, price)
         # super().__init__(name, price)
         self.__speed = speed
         
@@ -26,7 +26,10 @@ def main():
     # C = Computer("MacBook", 2500, 4000)
     # print(SmartPhone.mro())
     obj = SmartPhone("iPhone", 1200, "5G", 4000, "8K")
-
+    # print(obj)
+    print(vars(obj))
+    print(SmartPhone.mro())
 
 if __name__ == "__main__":
     main()
+    

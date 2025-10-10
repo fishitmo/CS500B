@@ -64,10 +64,10 @@ def main():
     ta.dowork()
     ta.display()
     print()
-    ta.name = "Lily"
-    print()
-    ta.display()
-    print()
+    # ta.name = "Lily"
+    # print()
+    # ta.display()
+    # print()
     
 if __name__ == "__main__":
     main()
