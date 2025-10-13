@@ -1,3 +1,5 @@
 CS480 Java Programming
 CS526 Advanced Web Programming
 CS557 Advanced JavaScript Programming
+CS500: Object Oriented Programming 
+CS457: Data Base Modeling

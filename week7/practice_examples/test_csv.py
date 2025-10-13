@@ -1,18 +1,20 @@
+import csv
+
 class CourseFile:
-    def __init__(self, filename: str) -> None:
+    def __init__(self, filename):
         self.__filename = filename
         
     def writeCourses(self, courses):
-        with open(self.__filename, "w") as file:
-            for course in courses:
-                file.write(course + "\n")
-                
+        with open(self.__filename, "w", newline= "") as file:
+             writer = csv.writer(file)
+             writer.writerows(courses)
+    
     def readCourses(self):
         courses = []
-        with open(self.__filename) as file:
-            for line in file:
-                line = line.replace("\n", "")
-                courses.append(line)
+        with open(self.__filename, newline= '') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                courses.append(row)
         return courses
     
     def listCourses(self, courses):
@@ -21,21 +23,25 @@ class CourseFile:
         print()
         
     def addCourse(self, courses):
-        course = input("Course: ")
+        courseNo = input("Course No: ")
+        courseTile = input("Course Title: ")
+        course = []
+        course.append(courseNo)
+        course.append(courseTile)
         courses.append(course)
         self.writeCourses(courses)
-        print(course + " was added.\n")
         
+        print(courseNo + " was added.\n")
+             
     def deleteCourse(self, courses):
-        index = int(input("Item no: "))
+        index = int(input("Item no: "))   
         if index < 1 or index > len(courses):
-            print("Invalid course no!")
-            return 
+            print('Invalid course no!')
+            return
         course = courses.pop(index - 1)
         self.writeCourses(courses)
-        print(course + " was deleted.\n")
+        print(course[0] + " was deleted.\n")
         
-            
 def displayMenu():
     print("The Course List program")
     print()
@@ -45,18 +51,19 @@ def displayMenu():
     print("D - Delete a course")
     print("E - Exit program")
     print()
-
+    
 def main():
-    file = CourseFile("courses.txt")
+    file = CourseFile("courses.csv")
+    
     displayMenu()
     courses = file.readCourses()
     while True:
         command = input("Command: ")
-        command = command.lower()
+        commmand = command.lower()
         if command == "l":
             file.listCourses(courses)
         elif command == "a":
-            file.addCourse(courses)
+            file.addCourse(courses)    
         elif command == "d":
             file.deleteCourse(courses)
         elif command == "e":
@@ -65,5 +72,7 @@ def main():
         else:
             print("Not a valid command. Please try again.")
 
-if __name__ == "__main__":
-    main()
+
+if __name__ == "__main__":        
+        main()                                
+        
