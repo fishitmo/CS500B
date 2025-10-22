@@ -1,3 +1,7 @@
+
+
+
+
 class Student:
     def __init__(self, name, gpa):
         self.name = name
@@ -7,9 +11,12 @@ class Student:
     def dowork(self):
         print("Student", self.name, "doing homework")
         
+        
     def display(self):
         print("Name =", self.name)
         print("GPA =", self.gpa)
+        
+       
 
 
 
@@ -19,15 +26,17 @@ class Teacher:
         self.name = name
         self.salary = salary
         self.project = project
-    
+        
         
     def dowork(self):
         print("Teacher", self.name, "teaching classes")
+      
         
     def display(self):
         print("Name =", self.name)
         print("Salary =", self.salary)
         print("Project =", self.project)
+       
         
 class TA(Teacher, Student):
     def __init__(self, name, gpa, salary, project):        

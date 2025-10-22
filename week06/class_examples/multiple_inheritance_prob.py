@@ -1,7 +1,7 @@
 class Student:
     def __init__(self, name, gpa):
         self.name = name
-        self.__gpa = gpa
+        self.gpa = gpa
         
     
     def dowork(self):
