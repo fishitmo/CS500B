@@ -1,0 +1,279 @@
+<mxfile host="65bd71144e">
+    <diagram id="realEstateUML" name="Real Estate UML">
+        <mxGraphModel dx="574" dy="1035" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-1" value="Property" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1" collapsed="1">
+                    <mxGeometry x="20" y="-300" width="90" height="30" as="geometry">
+                        <mxRectangle x="20" y="-300" width="280" height="736" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-2" value="- address: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="26" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-6" value="- price: float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="52" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-9" value="- square_footage: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="78" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-10" value="- num_bedrooms: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="104" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-11" value="- owner: Owner" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="130" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-12" value="- Interested_buyers: List[Buyer]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="156" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-13" value="- property_type: PropertyType&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="182" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-14" value="- observers: List[IObserver]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="208" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="234" width="280" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-15" value="+ __init__(address, price,&amp;nbsp; sqft, beds, owner, type)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="242" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-4" value="+ get_address(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="268" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-16" value="+ get_price(): float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="294" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-17" value="+ set_price(price: float): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="320" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-18" value="+ get_square_footage(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="346" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-19" value="+ get_num_bedrooms(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="372" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-20" value="+ get_owner(): Owner" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="398" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-21" value="+ get_property_type(): PropertyType" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="424" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-22" value="+ get_status(): PropertyStatus" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="450" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-23" value="+ get_interested_buyers(): List[Buyer]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="476" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-24" value="+ set_status(status: PropertyStatus): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="502" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-25" value="+ add_interested_buyer(buyer: Buyer): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="528" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-28" value="+ remove_interested_buyer(buyer: Buyer): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="554" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-29" value="+ attach_observer(observer: IObserver): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="580" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-30" value="+ detach_observer(observer: IObserver): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="606" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-31" value="+ notify_observers(event: str): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="632" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-33" value="+ to_dict(): dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="658" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-34" value="+ validate(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="684" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-35" value="+ __str__(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-1" vertex="1">
+                    <mxGeometry y="710" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-40" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;&lt;i&gt;Person&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# first_name: str&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# last_name: str&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ __init__(first_name, last_name)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ get_first_name(): str&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ get_last_name(): str&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ get_full_name(): str&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ set_first_name(name: str): None&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ set_last_name(name: str): None&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ to_dict(): dict&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validate(): bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ __str__(): str&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ __eq__(other): bool&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="-400" y="-670" width="190" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-41" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;&lt;i&gt;IDataPersistence&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ save(data: List): None&lt;br&gt;+ load(): List&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ delete(identifier: str): bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ update(identifier: str, data: dict): bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ exists(identifier: str): bool&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="-110" y="-640" width="220" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-42" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;&lt;i&gt;ISearchable&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ search_by_criteria(criteria: dict): List&lt;br&gt;+ search_by_name(name: str): List&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ get_all_sorted(): List&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="-630" width="220" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-43" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;&lt;i&gt;IObserver&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ update(event: str, data: dict): None&lt;br&gt;+ get_observer_id(): str&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="-640" width="220" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-44" value="Owner" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1" collapsed="1">
+                    <mxGeometry x="-370" y="-300" width="90" height="30" as="geometry">
+                        <mxRectangle x="-160" y="-200" width="280" height="346" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-45" value="- properties: List[Property]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="26" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-46" value="- contact_info: ContactInfo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="52" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-53" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="78" width="280" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-54" value="+ __init__(first_name, last_name, contact)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="86" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-55" value="+ add_property(property: Property): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="112" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-66" value="+ remove_property(property: Property): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="138" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-56" value="+ get_properties(): List[Property]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="164" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-57" value="+ get_property_count(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="190" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-58" value="+ get_contact_info(): ContactInfo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="216" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-59" value="+ set_contact_info(contact: ContactInfo): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="242" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-60" value="+ to_dict(): dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="268" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-61" value="+ validate(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="294" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-72" value="+ __hash__(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-44" vertex="1">
+                    <mxGeometry y="320" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-73" value="Buyer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1" collapsed="1">
+                    <mxGeometry x="-180" y="-300" width="90" height="30" as="geometry">
+                        <mxRectangle x="-180" y="-300" width="300" height="632" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-74" value="- phone_number: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="26" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-75" value="- email: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="52" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-76" value="- interested_properties: List[Property]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="78" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-77" value="- search_preferences: SearchPrefernces" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="104" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-82" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="130" width="300" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-83" value="+ __init__(fname, lname,&amp;nbsp; phone, email)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="138" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-126" value="+ get_first_name(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="164" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-127" value="+ get_last_name(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="190" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-128" value="+ get_full_name(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="216" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-84" value="+ get_phone_number(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="242" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-85" value="+ get_email(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="268" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-86" value="+ set_phone_number(phone: str): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="294" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-87" value="+ set_email(email: str): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="320" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-88" value="+ add_interested_property(prop: Property): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="346" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-89" value="+ remove_interested_property(prop: Property): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="372" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-90" value="+ get_interested_properties(): List[Property]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="398" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-91" value="+ set_preferences(prefs: SearchPreferences): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="424" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-92" value="+ matches_preferences(prop: Property): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="450" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-93" value="+ update(event: str, data: dict): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="476" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-94" value="+ get_observer_id(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="502" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-95" value="+ to_dict(): dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="528" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-96" value="+ validate(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="554" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-103" value="+ __str__(): str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="580" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-125" value="+ __eq__(other): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-73" vertex="1">
+                    <mxGeometry y="606" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-129" value="CSVDataPersistance" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1" collapsed="1">
+                    <mxGeometry x="260" y="-300" width="90" height="30" as="geometry">
+                        <mxRectangle x="260" y="-300" width="300" height="372" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-130" value="- file_path: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="26" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-131" value="- delimiter: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="52" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-132" value="- encoding: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="78" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-134" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="104" width="300" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-135" value="+ __init__(file_path, delimiter, encoding)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="112" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-136" value="+ save(data: List): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="138" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-137" value="+ load(): List" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="164" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-138" value="+ delete(identifier: str): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="190" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-139" value="+ update(identifier: str, data: dict): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="216" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-140" value="+ exists(identifier: str): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="242" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-141" value="- _ensure_file_exists(): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="268" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-142" value="- _read_csv(): List[dict]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="294" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-143" value="- _write_csv(data: List[dict]): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="320" width="300" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="EZt6_PV-XYcFElyKJE-l-144" value="- _validate_data(data: dict): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="EZt6_PV-XYcFElyKJE-l-129" vertex="1">
+                    <mxGeometry y="346" width="300" height="26" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
