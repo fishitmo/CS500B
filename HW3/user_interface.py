@@ -397,7 +397,45 @@ class UserInterface:
             pass
         
     def add_buyer_ui(self):
-        pass
+        # User interface for registering a new buyer 
+        print("\n"+"="*60)
+        print(f"{'REGISTER NEW BUYER':^60}")
+        print("="*60)        
+        try:
+            fname = self.get_input("Enter buyer's first name: ")
+            if not fname:
+                print("\n First name cannot be empty!")
+                return
+            lname = self.get_input("Enter buyer's last name: ")
+            if not lname:
+                print("\n Last name cannot be empty!")
+                return
+            phone = self.get_input("Enter buyer's phone number: ")  
+            if not phone:
+                print("\n Phone number cannot be empty!")
+                return
+            email = self.get_input("Enter buyer's email address: ")
+            if not email:
+                print("\n Email address cannot be empty!")
+                return
+            # Validate email format
+            if "@" not in email or "." not in email:
+                print("\n Invalid email format!")
+                return
+            # buyer = self.manager.add_buyer(fname, lname, phone, email)
+            print(f"\n Buyer '{fname} {lname}' registered successfully!")
+            print(f"   Phone: {phone}")
+            print(f"   Email: {email}")
+        except KeyboardInterrupt:    
+            print("\nOperation cancelled by user. Returning to main menu.")
+        except ValueError as e:
+            print("\nInvalid input.")
+            print(type(e), 'message =', e)
+        except Exception as e:
+            print(type(e), 'message =', e)
+            print("An unexpected error occurred while registering the buyer.")
+        finally:
+            pass    
     
     def add_interest_ui(self):
         pass
@@ -443,5 +481,15 @@ class UserInterface:
 
 
 if __name__ == "__main__":
-    pass
+    print("\n" + "="*60)
+    print(f"{'PRESENTATION LAYER - USER INTERFACE':^60}")
+    print("="*60)
+    
+    print("This is the UserInterface class for the Presentation Layer.")
+    print("="*60 + "\n")
 
+    ui = UserInterface()
+    
+    # Display sample menu (without running the full application)
+    print("\n--- SAMPLE MENU DISPLAY ---")
+    ui.display_menu()
