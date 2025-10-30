@@ -31,7 +31,7 @@ class PropertyType(Enum):
             types_list.append(prop_type.value)
         return types_list
     
-    # define __eq__ method
+    
     def __eq__(self, other: object) -> bool:
         # Compare to another PropertyType by identity
         if isinstance(other, PropertyType):
@@ -43,6 +43,9 @@ class PropertyType(Enum):
             except ValueError:
                 return False
         return False
+    
+    
+    
     
 
 

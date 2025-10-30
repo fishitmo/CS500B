@@ -1,17 +1,21 @@
 from person import Person
 from contactInfo import ContactInfo
-from property import Property
+from property_type import PropertyType
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from property import Property
 
 
 class Owner(Person):
     
     
     def __init__(self, first_name: str, last_name: str, contact_info: ContactInfo) -> None:
-        super().__init__(first_name, last_name) # type: ignore
-        self.__properties: list[Property] = []
+        super().__init__(first_name, last_name) 
+        self.__properties: list['Property'] = []
         self.__contact_info = contact_info
 
-    def add_property(self, address: str, price: float, square_footage: int, num_bedrooms: int, property_type: str) -> None:
+    def add_property(self, address: str, price: float, square_footage: int, num_bedrooms: int, property_type: PropertyType | str) -> None:
         
         # check for duplicate address
         
@@ -19,7 +23,15 @@ class Owner(Person):
             if prop.address == address:
                 raise ValueError(f"Property with address {address} already exists for this owner.")
             
-        new_property = Property(address, price, square_footage, num_bedrooms, property_type)
+        # normalize property_type to enum
+        if isinstance(property_type, str):
+            prop_enum = PropertyType.from_string(property_type)
+        else:
+            prop_enum = property_type
+
+        # Import locally to avoid circular import at module load time
+        from property import Property
+        new_property = Property(address, price, square_footage, num_bedrooms, self, prop_enum)
 
         self.__properties.append(new_property)
 
@@ -47,7 +59,10 @@ class Owner(Person):
             raise StopIteration
     def get_property_count(self) -> int:
         return len(self.__properties)
-
+    
+    @property
+    def properties(self) -> list['Property']:
+        return self.__properties.copy()
 
     @property
     def contact_info(self) -> ContactInfo:
@@ -59,16 +74,16 @@ class Owner(Person):
         
     def to_dict(self) -> dict:
         return {
-            "first_name": self.first_name, # type: ignore
-            "last_name": self.last_name, # type: ignore
-            "full_name": self.full_name, # type: ignore
-            "contact_info": self.__contact_info.to_dict(), # type: ignore
-            "property_count": self.get_property_count() # type: ignore
+            "first_name": self.first_name, 
+            "last_name": self.last_name, 
+            "full_name": self.full_name, 
+            "contact_info": self.__contact_info.to_dict(), 
+            "property_count": self.get_property_count() 
         }
         
     def validate(self) -> bool:
 
-        if not self.first_name or not self.last_name: # type: ignore
+        if not self.first_name or not self.last_name: 
             return False
         
         if not self.__contact_info.validate():
@@ -79,7 +94,7 @@ class Owner(Person):
     
     def __str__(self) -> str:
         
-        output = f"Owner: {self.full_name}\n" # type: ignore
+        output = f"Owner: {self.full_name}\n" 
         output += str(self.__contact_info) + "\n"
         output += f"Number of Properties: {self.get_property_count()}\n"
         for prop in self.__properties:
@@ -107,9 +122,9 @@ if __name__ == "__main__":
     
     # Testing inherited methods from Person
     print("Testing inherited methods from Person:")
-    print(f"First name: {owner1.first_name}") # type: ignore
-    print(f"Last name: {owner1.last_name}") # type: ignore
-    print(f"Full name: {owner1.full_name}") # type: ignore
+    print(f"First name: {owner1.first_name}") 
+    print(f"Last name: {owner1.last_name}") 
+    print(f"Full name: {owner1.full_name}") 
     
     #testing contact info access
     
@@ -181,20 +196,20 @@ if __name__ == "__main__":
     print("Testing with empty first name:")
     try:
         contact_test = ContactInfo("(555) 000-1111", "john.doe@email.com", "123 Main St, City, State")
-        invalid_owner = Owner("", "Owner", contact_test) # type: ignore
+        invalid_owner = Owner("", "Owner", contact_test) 
         print(invalid_owner)
     except ValueError as e:
         print(f"Caught expected exception: {e}")
      # testing name modification from Person
     print("Testing name modification from Person:")
-    owner1.first_name = "Jane" # type: ignore
-    owner1.last_name = "Doe-Smith" # type: ignore
-    print(f"Updated Owner1 Full Name: {owner1.full_name}") # type: ignore   
+    owner1.first_name = "Jane" 
+    owner1.last_name = "Doe-Smith" 
+    print(f"Updated Owner1 Full Name: {owner1.full_name}")  
     
     # try to test invalid name 
     print("Testing invalid name modification:")
     try:
-        owner1.first_name = "" # type: ignore
+        owner1.first_name = "" 
     except ValueError as e:
         print(f"Caught expected exception: {e}")
      

@@ -33,44 +33,63 @@ class SearchPreferences:
         for prop_type in property_types:
             self.__property_types.append(prop_type)
 
-        @property
-        def min_price(self) -> float:
-            return self._min_price
-        @property
-        def max_price(self) -> float:
-            return self._max_price
-        @property
-        def min_bedrooms(self) -> int:
-            return self._min_bedrooms
-        
-        def __iter__(self):
-            self.__index = 0
-            return self
-        def __next__(self):
-            if self.__index < len(self.__property_types):
-                prop_type = self.__property_types[self.__index]
-                self.__index += 1
-                return prop_type
-            else:
-                raise StopIteration
-        
-        def matches(self, property: Property) -> bool:
-            
-            
-            if property.price < self._min_price or property.price > self._max_price:
+    @property
+    def min_price(self) -> float:
+        return self._min_price
+
+    @property
+    def max_price(self) -> float:
+        return self._max_price
+
+    @property
+    def min_bedrooms(self) -> int:
+        return self._min_bedrooms
+
+    # Iterator over allowed property types
+    def __iter__(self):
+        self.__index = 0
+        return self
+
+    def __next__(self) -> PropertyType:
+        if self.__index < len(self.__property_types):
+            prop_type = self.__property_types[self.__index]
+            self.__index += 1
+            return prop_type
+        raise StopIteration
+
+    def matches(self, property: Property) -> bool:
+        # price range
+        if property.price < self._min_price or property.price > self._max_price:
+            return False
+        # bedrooms
+        if property.num_bedrooms < self._min_bedrooms:
+            return False
+
+        # check property type using iterator protocol if any are specified
+        if len(self.__property_types) > 0:
+            # normalize property's type
+            try:
+                if isinstance(property.property_type, PropertyType):
+                    candidate = property.property_type
+                else:
+                    candidate = PropertyType.from_string(str(property.property_type))
+            except ValueError:
                 return False
-            if property.num_bedrooms < self._min_bedrooms:
+
+            found = False
+            it = iter(self)  
+            while True:
+                try:
+                    allowed = next(it)
+                except StopIteration:
+                    break
+                if allowed is candidate:
+                    found = True
+                    break
+            if not found:
                 return False
-            
-            # check property type
-            if len(self.__property_types) > 0:
-                if isinstance(property.property_type, str):
-                    prop_type_enum = PropertyType.from_string(property.property_type)
-                
-                if prop_type_enum not in self.__property_types:
-                    return False     
-            
-            return True
+
+        return True
 
     def to_dict(self) -> dict:
         output = []

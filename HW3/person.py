@@ -5,20 +5,20 @@ class Person(ABC):
     
     
     def __init__(self, first_name: str, last_name: str) -> None:
-        self._first_name = first_name
-        self._last_name = last_name
+        self.__first_name = first_name
+        self.__last_name = last_name
 
     @property
     def first_name(self) -> str:
-        return self._first_name
+        return self.__first_name
     
     @property
     def last_name(self) -> str:
-        return self._last_name
+        return self.__last_name
     
     @property
     def full_name(self) -> str:
-        return f"{self._first_name} {self._last_name}"
+        return f"{self.__first_name} {self.__last_name}"
     
 
     @first_name.setter
@@ -31,7 +31,7 @@ class Person(ABC):
     def last_name(self, last_name: str) -> None:
         if not last_name:
             raise ValueError("Last name cannot be empty.")
-        self._last_name = last_name
+        self.__last_name = last_name
     
     @abstractmethod
     def to_dict(self) -> dict:

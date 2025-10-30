@@ -13,6 +13,8 @@ class Person:
         self.__lhand = Hand(lfingers) # Create Object
         self.__right = Hand(rfingers) # Create Object
     
+   
+    
     def __str__(self):
         return f"Person: {self.__name}, Age: {self.__age}, {self.__lhand}, {self.__right}"
         
