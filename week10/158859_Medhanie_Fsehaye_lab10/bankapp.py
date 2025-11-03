@@ -29,6 +29,8 @@ class BankApp:
                 break
             else:
                 print("Invalid choice. Please try again.")
+                
+    
 
     def __show_menu(self) -> None:
         print()

@@ -101,6 +101,7 @@ class Bank:
         return min_customer
     
     
+    
 def main():
     
     bank = Bank("SFBU")

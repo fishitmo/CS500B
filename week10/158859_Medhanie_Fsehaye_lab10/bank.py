@@ -128,7 +128,9 @@ def main():
     print("-- Delete a customer")
     bank.delete_customer("Smith", "John")
     bank.display_customers()
-
+    
+    
+    
 
 if __name__ == "__main__":
     main()
