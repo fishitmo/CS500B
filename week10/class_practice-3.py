@@ -110,8 +110,6 @@ class DigitalDisplay(Observer, DisplayElement):
        
 def main():
     engineData = EngineData()
-    
-    
     analog = AnalogDisplay(engineData)
     digital = DigitalDisplay(engineData)
     

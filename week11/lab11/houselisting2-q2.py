@@ -9,6 +9,26 @@ class Displayable(ABC):
     @abstractmethod
     def display() -> None:
         pass
+class Observer(ABC):
+    
+    @abstractmethod
+    def update(self, event: str, house: House) -> None:
+        pass
+    
+class Subject(ABC):
+    
+    @abstractmethod
+    def attach(self, observer: Observer) -> None:
+        pass
+    
+    @abstractmethod
+    def detach(self, observer: Observer) -> None:
+        pass
+    
+    @abstractmethod
+    def notify(self, event: str, house: House) -> None:
+        pass
+    
 
 
 class House(Displayable):
@@ -71,7 +91,7 @@ class Contact(Displayable):
     
 
 
-class Owner(Contact):
+class Owner(Contact, Observer):
     def __init__(self, lastname, firstname, phone_number, email):
         super().__init__(lastname, firstname, phone_number, email)
         self.__houses:  list[House] = []
@@ -79,7 +99,11 @@ class Owner(Contact):
     def add_house(self, house: House):
        if house not in self.__houses:
           self.__houses.append(house)
-        
+    def belong(self, house: House) -> bool:
+        return house in self.__houses
+    
+    def update(self, event: str, house: House) -> None:
+        print(f"Owner notification: {event} - {house}")
     def __str__(self) -> str:
         output = f"{super().__str__()}\n"
         output += "Owns the following houses:\n"
@@ -93,7 +117,7 @@ class Owner(Contact):
         print(self)
    
 
-class Buyer(Contact):
+class Buyer(Contact, Observer):
     def __init__(self, lastname, firstname, phone_number, email):
         super().__init__(lastname, firstname, phone_number, email)
         self.__watch_list = []
@@ -115,7 +139,9 @@ class Buyer(Contact):
     def remove_from_watchlist(self, house):
         if house in self.__watch_list:
             self.__watch_list.remove(house)
-        
+    
+    def update(self, event: str, house: House) -> None:
+        print(f"Buyer notifiaction: {event} - {house}")    
     
     def __str__(self) -> str:
         output = f"{super().__str__()}\n"
@@ -128,14 +154,14 @@ class Buyer(Contact):
         print(self)
 
 
-class Company(Displayable):
+class Company(Displayable, Subject):
     def __init__(self, companyName):
         self.__companyName = companyName
         self.__owners: list[Owner] = []
         self.__buyers: list[Buyer] = []
         self.__agents: list[Agent] = []
         self.__houses: list[House] = []
-
+        self.__observers: list[Observer] = []
     def add_owner(self, owner: Owner):
         if owner not in self.__owners:
             self.__owners.append(owner)
@@ -151,6 +177,14 @@ class Company(Displayable):
     def add_house_to_listing(self, house):
         if house not in self.__houses:
             self.__houses.append(house)
+            # notify all agents, owners , and buyers
+            owner = self.get_owner_by_house(house)
+            for agent in self.__agents:
+                agent.update("House added to listing", house)
+            if owner is not None:
+                owner.update("House added to listing", house)
+            for buyer in self.__buyers:
+                buyer.update("House added to listing", house)
 
     def get_house_by_address(self, address: str):
          for house in self.__houses:
@@ -161,19 +195,44 @@ class Company(Displayable):
     def remove_house_from_listing(self, house: House) -> None:
         if house in self.__houses:
             self.__houses.remove(house)
-
+            # notify all agents and the owner
+            owner = self.get_owner_by_house(house)
+            for agent in self.__agents:
+                agent.update("House removed from the listing", house)
+            if owner is not None:
+                owner.update("House removed from the listing", house)
+            
     # Help to remove that house from all buyers' watch list.
     def remove_house_from_watchlist(self, house: House) -> None:
         for buyer in self.__buyers:
             buyer.remove_from_watchlist(house)
-
+    def get_agents_by_company(self) -> list[Agent]:
+        return self.__agents.copy()
+        
     def get_buyers_by_house(self, house) -> list[Buyer]:
         buyers: list[Buyer] = []
         for buyer in self.__buyers:
             if buyer.intersted(house) is True:
                 buyers.append(buyer)
         return buyers
-
+    def get_owner_by_house(self, house) -> Owner|None:
+        for owner in self.__owners:
+            if owner.belong(house) is True:
+                return owner
+        return None
+    
+    def attach(self, observer: Observer) -> None:
+        if observer not in self.__observers:
+            self.__observers.append(observer)
+            
+    def detach(self, observer: Observer) -> None:
+        if observer in self.__observers:
+            self.__observers.remove(observer)
+            
+    def notify(self, event: str, house: House) -> None:
+        
+        for observer in self.__observers:
+            observer.update(event, house)
     
     def __str__(self) -> str:
         output = f"Comapny Name: {self.__companyName}\n"
@@ -196,13 +255,14 @@ class Company(Displayable):
     def display(self):
         print(self)
 
-
-class Agent(Contact):
+class Agent(Contact, Observer):
     def __init__(self, lastname, firstname, phone_number, email, position, company):
         super().__init__(lastname, firstname, phone_number, email)
         self.__position = position
         self.__company: Company = company
-
+    def update(self,  event: str, house: House) -> None:
+        print(f"Agent notification: {event} - {house}")
+    
     def add_house_to_listing_for_owner(self, owner: Owner, house: House):
         self.__company.add_owner(owner)
         self.__company.add_house_to_listing(house)
@@ -211,12 +271,33 @@ class Agent(Contact):
         self.__company.add_buyer(buyer)
         buyer.save_to_watchlist(house)
 
-    def edit_house_price(self, address: str, new_price: str):
+    def edit_house_price(self, address: str, new_price: float):
         house = self.__company.get_house_by_address(address)
         if house is not None:
             house.price = new_price
-
+            # notify all agents, owners, and prospective buyers
+            owner = self.__company.get_owner_by_house(house)
+            buyers = self.__company.get_buyers_by_house(house)
+            for agent in self.__company.get_agents_by_company():
+                agent.update("House price updated", house)
+            if owner is not None:
+                owner.update("House price updated", house)
+            for buyer in buyers:
+                buyer.update("House price updated", house)
+            
     def sold_house(self, house):
+        # get owners and interested buyers before removing 
+        owner = self.__company.get_owner_by_house(house)
+        buyers = self.__company.get_buyers_by_house(house)
+        
+        # notify all agents , owner , and interested buyers
+        for agent in self.__company.get_agents_by_company():
+            agent.update("House sold", house)
+        if owner is not None:
+            owner.update("House sold", house)
+        for buyer in buyers:
+                buyer.update("House sold", house)
+        # remove from listing and watchlist
         self.__company.remove_house_from_listing(house)
         self.__company.remove_house_from_watchlist(house)
 

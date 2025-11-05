@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 
 class Displayable(ABC):
     @abstractmethod
-    def display() -> None:
+    def display():
         pass
 
 
@@ -63,7 +63,7 @@ class Contact(Displayable):
     # add some public properties here if necessary 
 
     def __str__(self) -> str:
-        return f"Last Name: {self.__lastname},First Name: {self.__firstname},Phone Number: {self.__phone_number}, Email: {self.__email}"
+        return f" Last Name: {self.__lastname}, First Name: {self.__firstname}, Phone Number: {self.__phone_number}, Email: {self.__email}"
 
     def display(self):
         print(self)
@@ -158,14 +158,12 @@ class Company(Displayable):
                 return house
          return None        
 
-    def remove_house_from_listing(self, house: House) -> None:
-        if house in self.__houses:
-            self.__houses.remove(house)
+    def remove_house_from_listing(self, house):
+        pass
 
     # Help to remove that house from all buyers' watch list.
-    def remove_house_from_watchlist(self, house: House) -> None:
-        for buyer in self.__buyers:
-            buyer.remove_from_watchlist(house)
+    def remove_house_from_watchlist(self, house):
+        pass
 
     def get_buyers_by_house(self, house) -> list[Buyer]:
         buyers: list[Buyer] = []
@@ -180,17 +178,15 @@ class Company(Displayable):
         output += "=========================== The list of agents: ===================================\n"
         for agent in self.__agents:
             output += str(agent) + "\n"
-       
-        output += "=========================== The house listing: ===================================\n"
-        for house in self.__houses:
-            output += str(house) + "\n"
         output += "=========================== The list of owners: ===================================\n"
         for owner in self.__owners:
             output += str(owner) + "\n"
         output += "=========================== The list of buyers: ===================================\n"
         for buyer in self.__buyers:
             output += str(buyer) + "\n"
-            
+        output += "=========================== The list of houses: ===================================\n"
+        for house in self.__houses:
+            output += str(house) + "\n"
         return output
 
     def display(self):
@@ -221,10 +217,9 @@ class Agent(Contact):
         self.__company.remove_house_from_watchlist(house)
 
     # print all potential buyers who are interested in buying that house
-    def display_potental_buyers(self, house: House):
-        buyers = self.__company.get_buyers_by_house(house)
-        for buyer in buyers:
-            buyer.display()
+    def display_potental_buyers(self, house):
+        pass
+    
     def __str__(self) ->str:
         output = f"{super().__str__()}\n"
         output += f"Position = {self.__position}"
