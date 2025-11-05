@@ -33,7 +33,6 @@ class DisplayElement(ABC):
 class EngineData(Subject):
     
     def __init__(self):
-        
         self.__observers = []
         self.__tempreture = 0.0
         self.__rpm = 0.0
@@ -64,18 +63,19 @@ class EngineData(Subject):
         
 class AnalogDisplay(Observer, DisplayElement):
     
-    def __init__(self, engineData):
+    def __init__(self, engineData: EngineData):
         self.__engineData = engineData
         self.__temperature =0
         self.__rpm = 0.0
         self.__speed = 0.0
-        engineData.registerObserver(self)
+        # self.__engineData.registerObserver(self)
+        self.__engineData.registerObserver(self)
         
         
     def display(self):
         
         print("Analog Display:")
-        print("Temperature =", self.__rpm)
+        print("Temperature =", self.__temperature)
         print("RPM =", self.__rpm)
         print("Speed =", self.__speed)
         
@@ -87,12 +87,12 @@ class AnalogDisplay(Observer, DisplayElement):
         
 class DigitalDisplay(Observer, DisplayElement):
     
-    def __init__(self, engineData):
+    def __init__(self, engineData: EngineData):
         self.__engineData = engineData
         self.__temperature = 0
         self.__rpm = 0.0
         self.__speed = 0.0
-        engineData.registerObserver(self)
+        self.__engineData.registerObserver(self)
         
     def display(self):
         print("Digital Display:")
@@ -103,12 +103,13 @@ class DigitalDisplay(Observer, DisplayElement):
         
     def update(self, temp, rpm, speed):
               
-       self.__temperature = rpm
+       self.__temperature = temp
        self.__rpm = rpm
        self.__speed = speed
        self.display()
        
 def main():
+    
     engineData = EngineData()
     analog = AnalogDisplay(engineData)
     digital = DigitalDisplay(engineData)
@@ -116,13 +117,21 @@ def main():
     print("The first setMeasurments called.")
     engineData.setMeasurements(80, 7000, 80)
     
+    
     engineData.removeObserver(digital)
     
     print("The second setMeasurments called.")
     engineData.setMeasurements(60, 4000, 60)
     
+    engineData.registerObserver(digital)
+    
+    print("The third setMeasurements called.")
+    engineData.setMeasurements(60, 4000, 60)
+    
 if __name__ == "__main__":
     main()
+
+
     
     
     
