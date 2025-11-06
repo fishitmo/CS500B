@@ -63,12 +63,14 @@ def main():
     teacher = Teacher("Mr. Smith")
     student1 = Student("Alice")
     student2 = Student("Bob")
+    # student3 = Student("Fsehaye")
     dean = Dean("Dr. Johnson")
     teacher.subscribe(dean)
     teacher.subscribe(student1)
     teacher.subscribe(student2)
-    
-    teacher.create_assignment("HW1")
+    # teacher.subscribe(student3)
+    # teacher.unsubscribe(student3)
+    teacher.create_assignment("HW1") 
     print()
     teacher.create_assignment("HW2")
 
