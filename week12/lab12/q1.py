@@ -6,19 +6,31 @@ class Node(ABC):
     def __init__(self, content: str, attributes: dict[str, str]) -> None:
         self.__content = content 
         self.__attributes = attributes
-        self.__children = list[Node] = []
+        self.__children: list[Node] = []
         
     def appendChild(self, child: Node):
         self.__children.append(child)
     
     def html(self) -> str:
-        output = '<' + self.createTag() # Factory Method
+        output = '<' + self.createTag()   # Factory Method
         
         for k, v in self.attributes.items():
-            pass
+            
+            output += ' ' + k + '="' + v + '"'
+        output += '>'
+        
+        for child in self.children:
+            output += child.html()
+            
+        output += self.content
+        output += '</' + self.createTag() + '>'
+        return output
     @abstractmethod
-    def html(self) -> str:
+    def createTag(self) -> str:
         pass
+    # @abstractmethod
+    # def html(self) -> str:
+    #     pass
         
     @property
     def attributes(self) -> dict[str, str]:
@@ -57,6 +69,39 @@ class Html(Node):
     
     def html(self) -> str:
         return '<!DOCTYPE html>' + super().html()
+    
+
+def main():
+    divAtts = {}
+    divAtts['id'] = 'first'
+    divAtts['class'] = 'foo'
+    divA = Div('This is a test A', divAtts)
+    divAtts = {}
+    divAtts['id'] = 'second'
+    divAtts['class'] = 'bar'
+    divB = Div('This is a test B', divAtts)
+    divAtts = {}
+    divAtts['id'] = 'third'
+    divAtts['class'] = 'dump'
+    divC = Div('This is a test C', divAtts)
+    b = B('This is a simple HTML file')
+    divC.appendChild(b)
+    body = Body()
+    body.appendChild(divA)
+    body.appendChild(divB)
+    body.appendChild(divC)
+    title = Title('Example')
+    head = Head()
+    head.appendChild(title)
+    htmlAtts = {}
+    htmlAtts['lang'] = 'en'
+    html = Html('', htmlAtts)
+    html.appendChild(head)
+    html.appendChild(body)
+    print(html.html())
+    
+if __name__ == "__main__":
+    main()
 
 
 
