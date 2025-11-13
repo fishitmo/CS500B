@@ -68,19 +68,7 @@ class Html(Node):
         return "html"
     
     def html(self) -> str:
-        output = '<!DOCTYPE html><' + self.createTag()  
-        
-        for k, v in self.attributes.items():
-            
-            output += ' ' + k + '="' + v + '"'
-        output += '>'
-        
-        for child in self.children:
-            output += child.html()
-            
-        output += self.content
-        output += '</' + self.createTag() + '>'
-        return output
+        return '<!DOCTYPE html><' + super().html()
  
 class AbstractNodeFactory(ABC):
     
