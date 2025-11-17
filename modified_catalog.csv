@@ -4,7 +4,8 @@ MOVIE,221,Star Wars,"May 25, 1977",Adventure,DVD,George Lucas,"Mark Hamill,Harri
 PERIODICAL,331,Wall Street Journal 167(15),"Oct 23, 2023",JOURNAL
 PERIODICAL,332,Time 168(18),"Oct 26, 2023",MAGAZINE
 ARTICLE,Elon Musk's Struggle for the Future of AI 1. Unfortunately,Walter Isaacson,"Oct 26, 2023",332
-BOOK,150,Python for Beginners,"Jan 15, 2024",PAPERBACK,Programming,John Doe
-MOVIE,230,The Matrix,"Mar 31, 1999",Science Fiction,BLU_RAY,The Wachowskis,"Keanu Reeves, Carrie-Anne Moss",1999,
-PERIODICAL,350,Nature 500(1),"Jan 1, 2024",JOURNAL
-ARTICLE,Climate Change Research,Dr. Emily Chen,"Jan 1, 2024",350
+BOOK,999,Python Programming,"Jan 1, 2024",PAPERBACK,Programming,Alice
+MOVIE,888,The Matrix,"Mar 31, 1999",Science Fiction,BLU_RAY,The Wachowskis,Keanu Reeves,1999,
+PERIODICAL,777,Nature 500(1),"Jan 1, 2024",JOURNAL
+ARTICLE,Climate Change Study,Dr. Smith,"Jan 1, 2024",777
+ARTICLE,Quantum Computing Breakthrough,Dr. Jones,"Jan 1, 2024",777

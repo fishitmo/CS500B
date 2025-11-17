@@ -1,0 +1,715 @@
+================================================================================
+LIBRARY CATALOG SYSTEM - COMPREHENSIVE SAMPLE WORKFLOWS
+Step-by-Step Testing Guide for All Menu Options
+================================================================================
+
+These workflows will help you test every feature of the system.
+Follow them in order for the best experience.
+
+================================================================================
+WORKFLOW 1: STARTING THE APPLICATION
+================================================================================
+
+Step 1: Start the application
+Command: python main.py
+
+Expected Output:
+- Welcome banner with "LIBRARY CATALOG MANAGEMENT SYSTEM"
+- "Welcome to City Library"
+- Menu with options 0-14 (15 total options)
+
+Step 2: Verify initial data loaded
+Action: Select option 13 (Display All Items)
+Input: 13
+
+Expected Output:
+- Shows "Library: City Library"
+- Shows "Total Items: 5"
+- Displays 2 books (catalog #111, #121)
+- Displays 1 movie (catalog #221)
+- Displays 2 periodicals (catalog #331, #332)
+- Periodical #332 has 1 article
+
+================================================================================
+WORKFLOW 2: COMPLETE ADD AND SAVE CYCLE
+================================================================================
+
+This workflow demonstrates the typical use case: adding items and saving them.
+
+Step 1: Add a new book
+Action: Select option 1 (Add Book)
+Input: 1
+Input: 150
+Input: Python for Beginners
+Input: Jan 15, 2024
+Input: 2 (PAPERBACK)
+Input: Programming
+Input: John Doe
+
+Expected Output:
+- "✓ Book 'Python for Beginners' added successfully!"
+
+Step 2: Add a new movie
+Action: Select option 2 (Add Movie)
+Input: 2
+Input: 230
+Input: The Matrix
+Input: Mar 31, 1999
+Input: Science Fiction
+Input: 2 (BLU_RAY)
+Input: The Wachowskis
+Input: Keanu Reeves, Carrie-Anne Moss
+Input: 1999
+Input: 136
+
+Expected Output:
+- "✓ Movie 'The Matrix' added successfully!"
+
+Step 3: Add a new periodical
+Action: Select option 3 (Add Periodical)
+Input: 3
+Input: 350
+Input: Nature 500(1)
+Input: Jan 1, 2024
+Input: 1 (JOURNAL)
+
+Expected Output:
+- "✓ Periodical 'Nature 500(1)' added successfully!"
+
+Step 4: Add an article to the new periodical
+Action: Select option 4 (Add Article to Periodical)
+Input: 4
+Input: 350
+Input: Climate Change Research
+Input: Dr. Emily Chen
+Input: Jan 1, 2024
+
+Expected Output:
+- "Adding article to: Nature 500(1)"
+- "✓ Article 'Climate Change Research' added to periodical successfully!"
+
+Step 5: ⭐ SAVE YOUR WORK (NEW!)
+Action: Select option 14 (Save Data to File)
+Input: 14
+Input: [Press Enter to use default filename]
+
+Expected Output:
+- "=== Save Data to File ==="
+- "Enter filename (press Enter for 'catalog_data.csv'):"
+- "✓ Library data saved to catalog_data.csv"
+
+Step 6: Verify changes were saved
+Action: Select option 13 (Display All Items)
+Input: 13
+
+Expected Output:
+- Should now show 8 items total (original 5 + 3 new ones)
+- All new items displayed
+
+Step 7: Exit and restart to verify persistence
+Action: Select option 0 (Exit)
+Input: 0
+Command: python main.py
+Action: Select option 13 (Display All Items)
+Input: 13
+
+Expected Output:
+- Library loads with 8 items
+- All changes from previous session are present!
+- 💾 Data persistence works!
+
+================================================================================
+WORKFLOW 3: SAVE WITH CUSTOM FILENAME (BACKUP)
+================================================================================
+
+This demonstrates creating backup files.
+
+Step 1: Add a test item
+Action: Select option 1 (Add Book)
+Input: 1
+Input: 999
+Input: Test Backup Book
+Input: Jan 1, 2024
+Input: 2 (PAPERBACK)
+Input: Testing
+Input: Test Author
+
+Expected Output:
+- "✓ Book 'Test Backup Book' added successfully!"
+
+Step 2: ⭐ Save with custom filename
+Action: Select option 14 (Save Data to File)
+Input: 14
+Input: backup_jan_2024.csv
+
+Expected Output:
+- "=== Save Data to File ==="
+- "✓ Library data saved to backup_jan_2024.csv"
+
+Step 3: Save without .csv extension
+Action: Select option 14 (Save Data to File)
+Input: 14
+Input: my_backup
+
+Expected Output:
+- "✓ Library data saved to my_backup.csv"
+- Note: .csv extension automatically added!
+
+Step 4: Verify backup file exists
+Command: ls *.csv (or dir *.csv on Windows)
+
+Expected Output:
+- catalog_data.csv
+- backup_jan_2024.csv
+- my_backup.csv
+- All three files present!
+
+================================================================================
+WORKFLOW 4: SEARCH BY CATALOG NUMBER (Option 6)
+================================================================================
+
+Test 1: Search for existing book
+Action: Select option 6
+Input: 6
+Input: 111
+
+Expected Output:
+- Shows book details:
+  [BOOK] Catalog #: 111
+  Title: Programming in C++
+  Author: Peter
+  Published: Feb 2, 2023
+  Cover Type: HARDCOVER
+  Subject: Programming
+
+Test 2: Search for existing movie
+Action: Select option 6
+Input: 6
+Input: 221
+
+Expected Output:
+- Shows movie details with director, actors, year, length
+
+Test 3: Search for newly added item
+Action: Select option 6
+Input: 6
+Input: 150
+
+Expected Output:
+- Shows "Python for Beginners" book details
+
+Test 4: Search for non-existent item
+Action: Select option 6
+Input: 6
+Input: 999
+
+Expected Output:
+- "No item found with catalog number 999"
+
+================================================================================
+WORKFLOW 5: SEARCH BY TITLE (Option 7)
+================================================================================
+
+Test 1: Partial title search (case-insensitive)
+Action: Select option 7
+Input: 7
+Input: programming
+
+Expected Output:
+- "Found 2 item(s):"
+- Shows books with "Programming" in title
+
+Test 2: Search for newly added item
+Action: Select option 7
+Input: 7
+Input: Python
+
+Expected Output:
+- "Found 1 item(s):"
+- Shows "Python for Beginners"
+
+Test 3: Exact title search
+Action: Select option 7
+Input: 7
+Input: Star Wars
+
+Expected Output:
+- "Found 1 item(s):"
+- Shows the Star Wars movie
+
+Test 4: Search with no results
+Action: Select option 7
+Input: 7
+Input: Nonexistent Title
+
+Expected Output:
+- "No items found with title containing 'Nonexistent Title'"
+
+================================================================================
+WORKFLOW 6: SEARCH BY SUBJECT (Option 8)
+================================================================================
+
+Test 1: Search for "Programming"
+Action: Select option 8
+Input: 8
+Input: Programming
+
+Expected Output:
+- "Found 3 item(s):" (if you added Python book)
+- Shows all programming books
+
+Test 2: Search for "Science Fiction"
+Action: Select option 8
+Input: 8
+Input: Science Fiction
+
+Expected Output:
+- "Found 1 item(s):"
+- Shows The Matrix movie
+
+Test 3: Partial subject search
+Action: Select option 8
+Input: 8
+Input: Sci
+
+Expected Output:
+- Shows items with "Sci" in subject
+
+================================================================================
+WORKFLOW 7: LIST BOOKS BY COVER TYPE (Option 9)
+================================================================================
+
+Test 1: List HARDCOVER books
+Action: Select option 9
+Input: 9
+Input: 1
+
+Expected Output:
+- "Found 2 HARDCOVER book(s):"
+- Shows original Programming books
+
+Test 2: List PAPERBACK books
+Action: Select option 9
+Input: 9
+Input: 2
+
+Expected Output:
+- "Found 1 PAPERBACK book(s):"
+- Shows "Python for Beginners" (if added)
+
+Test 3: List CLOTHCOVER books
+Action: Select option 9
+Input: 9
+Input: 3
+
+Expected Output:
+- "Found 0 CLOTHCOVER book(s):" or "No CLOTHCOVER books found"
+
+================================================================================
+WORKFLOW 8: LIST ALL BOOKS (Option 10)
+================================================================================
+
+Action: Select option 10
+Input: 10
+
+Expected Output:
+- "=== All Books ==="
+- "Total books: 3" (original 2 + 1 new)
+- Shows complete details for all books
+
+================================================================================
+WORKFLOW 9: LIST ALL MOVIES (Option 11)
+================================================================================
+
+Action: Select option 11
+Input: 11
+
+Expected Output:
+- "=== All Movies ==="
+- "Total movies: 2" (original 1 + 1 new)
+- Shows Star Wars and The Matrix
+
+================================================================================
+WORKFLOW 10: LIST ALL PERIODICALS (Option 12)
+================================================================================
+
+Action: Select option 12
+Input: 12
+
+Expected Output:
+- "=== All Periodicals ==="
+- "Total periodicals: 3" (original 2 + 1 new)
+- Shows all periodicals with article counts
+- Nature 500(1) shows 1 article
+
+================================================================================
+WORKFLOW 11: ADD BOOK WITH ALL COVER TYPES (Option 1)
+================================================================================
+
+Test 1: Add HARDCOVER book
+Action: Select option 1
+Input: 1
+Input: 160
+Input: Java Programming
+Input: Feb 1, 2024
+Input: 1 (HARDCOVER)
+Input: Programming
+Input: James Gosling
+
+Expected Output:
+- "✓ Book 'Java Programming' added successfully!"
+
+Test 2: Add PAPERBACK book
+Action: Select option 1
+Input: 1
+Input: 170
+Input: Web Development
+Input: Mar 1, 2024
+Input: 2 (PAPERBACK)
+Input: Web Design
+Input: Jane Smith
+
+Expected Output:
+- "✓ Book 'Web Development' added successfully!"
+
+Test 3: Add CLOTHCOVER book
+Action: Select option 1
+Input: 1
+Input: 180
+Input: The Art of Programming
+Input: Apr 1, 2024
+Input: 3 (CLOTHCOVER)
+Input: Computer Science
+Input: Donald Knuth
+
+Expected Output:
+- "✓ Book 'The Art of Programming' added successfully!"
+
+Test 4: ⭐ SAVE YOUR WORK
+Action: Select option 14
+Input: 14
+Input: [Press Enter]
+
+Expected Output:
+- "✓ Library data saved to catalog_data.csv"
+
+================================================================================
+WORKFLOW 12: ADD MOVIE WITH ALL FORMATS (Option 2)
+================================================================================
+
+Test 1: Add DVD movie
+Action: Select option 2
+Input: 2
+Input: 240
+Input: Inception
+Input: Jul 16, 2010
+Input: Science Fiction
+Input: 1 (DVD)
+Input: Christopher Nolan
+Input: Leonardo DiCaprio
+Input: 2010
+Input: 148
+
+Expected Output:
+- "✓ Movie 'Inception' added successfully!"
+
+Test 2: Add BLU_RAY movie
+Action: Select option 2
+Input: 2
+Input: 250
+Input: Interstellar
+Input: Nov 7, 2014
+Input: Science Fiction
+Input: 2 (BLU_RAY)
+Input: Christopher Nolan
+Input: Matthew McConaughey
+Input: 2014
+Input: 169
+
+Expected Output:
+- "✓ Movie 'Interstellar' added successfully!"
+
+Test 3: Add VCD movie
+Action: Select option 2
+Input: 2
+Input: 260
+Input: Jurassic Park
+Input: Jun 11, 1993
+Input: Adventure
+Input: 3 (VCD)
+Input: Steven Spielberg
+Input: Sam Neill
+Input: 1993
+Input: 127
+
+Expected Output:
+- "✓ Movie 'Jurassic Park' added successfully!"
+
+Test 4: ⭐ SAVE YOUR WORK
+Action: Select option 14
+Input: 14
+Input: [Press Enter]
+
+Expected Output:
+- "✓ Library data saved to catalog_data.csv"
+
+================================================================================
+WORKFLOW 13: ADD PERIODICAL WITH ALL TYPES (Option 3)
+================================================================================
+
+Test 1: Add JOURNAL
+Action: Select option 3
+Input: 3
+Input: 360
+Input: Science Journal 2024
+Input: Jan 1, 2024
+Input: 1 (JOURNAL)
+
+Expected Output:
+- "✓ Periodical 'Science Journal 2024' added successfully!"
+
+Test 2: Add MAGAZINE
+Action: Select option 3
+Input: 3
+Input: 370
+Input: Tech Monthly
+Input: Feb 1, 2024
+Input: 2 (MAGAZINE)
+
+Expected Output:
+- "✓ Periodical 'Tech Monthly' added successfully!"
+
+Test 3: Add NEWSPAPER
+Action: Select option 3
+Input: 3
+Input: 380
+Input: Daily News
+Input: Mar 1, 2024
+Input: 3 (NEWSPAPER)
+
+Expected Output:
+- "✓ Periodical 'Daily News' added successfully!"
+
+Test 4: ⭐ SAVE YOUR WORK
+Action: Select option 14
+Input: 14
+Input: periodicals_backup.csv
+
+Expected Output:
+- "✓ Library data saved to periodicals_backup.csv"
+
+================================================================================
+WORKFLOW 14: ADD MULTIPLE ARTICLES TO PERIODICAL (Option 4)
+================================================================================
+
+Test 1: Add first article to Nature (catalog #350)
+Action: Select option 4
+Input: 4
+Input: 350
+Input: Quantum Physics Breakthrough
+Input: Dr. Robert Williams
+Input: Jan 1, 2024
+
+Expected Output:
+- "Adding article to: Nature 500(1)"
+- "✓ Article 'Quantum Physics Breakthrough' added to periodical successfully!"
+
+Test 2: Add second article to same periodical
+Action: Select option 4
+Input: 4
+Input: 350
+Input: AI in Medicine
+Input: Dr. Sarah Johnson
+Input: Jan 1, 2024
+
+Expected Output:
+- "✓ Article 'AI in Medicine' added to periodical successfully!"
+
+Test 3: Add article to Tech Monthly (catalog #370)
+Action: Select option 4
+Input: 4
+Input: 370
+Input: Latest Programming Trends
+Input: Tech Editor
+Input: Feb 1, 2024
+
+Expected Output:
+- "✓ Article 'Latest Programming Trends' added to periodical successfully!"
+
+Test 4: Verify articles were added
+Action: Select option 12 (List All Periodicals)
+Input: 12
+
+Expected Output:
+- Nature 500(1) shows 3 articles
+- Tech Monthly shows 1 article
+- All articles listed with details
+
+Test 5: ⭐ SAVE YOUR WORK
+Action: Select option 14
+Input: 14
+Input: [Press Enter]
+
+Expected Output:
+- "✓ Library data saved to catalog_data.csv"
+
+================================================================================
+WORKFLOW 15: REMOVE ITEM (Option 5)
+================================================================================
+
+Test 1: Remove a book with confirmation
+Action: Select option 5
+Input: 5
+Input: 180 (The Art of Programming)
+Input: yes
+
+Expected Output:
+- "Found: The Art of Programming"
+- "Are you sure you want to remove this item? (yes/no):"
+- "✓ Item removed successfully!"
+
+Test 2: Remove a movie with confirmation
+Action: Select option 5
+Input: 5
+Input: 260 (Jurassic Park)
+Input: yes
+
+Expected Output:
+- "Found: Jurassic Park"
+- "✓ Item removed successfully!"
+
+Test 3: Attempt removal but cancel
+Action: Select option 5
+Input: 5
+Input: 160 (Java Programming)
+Input: no
+
+Expected Output:
+- "Found: Java Programming"
+- "Removal cancelled."
+
+Test 4: Try to remove non-existent item
+Action: Select option 5
+Input: 5
+Input: 999
+
+Expected Output:
+- "Error: No item found with catalog number 999"
+
+Test 5: ⭐ SAVE CHANGES
+Action: Select option 14
+Input: 14
+Input: [Press Enter]
+
+Expected Output:
+- "✓ Library data saved to catalog_data.csv"
+
+Test 6: Verify removals persisted
+Action: Select option 13 (Display All Items)
+Input: 13
+
+Expected Output:
+- Should NOT show catalog #180 or #260
+- Should still show catalog #160
+
+================================================================================
+WORKFLOW 16: DISPLAY ALL ITEMS (Option 13)
+================================================================================
+
+Action: Select option 13
+Input: 13
+
+Expected Output:
+- "=== All Library Items ==="
+- "Library: City Library"
+- "Total Items: [current count]"
+- Complete listing of all books, movies, and periodicals
+- Each item shows full details
+- Periodicals show their articles
+
+================================================================================
+WORKFLOW 17: ⭐ SAVE DATA TO FILE (Option 14) - COMPREHENSIVE TEST
+================================================================================
+
+Test 1: Save with default filename
+Action: Select option 14
+Input: 14
+Input: [Press Enter]
+
+Expected Output:
+- "=== Save Data to File ==="
+- "Enter filename (press Enter for 'catalog_data.csv'):"
+- "✓ Library data saved to catalog_data.csv"
+
+Test 2: Save with custom filename
+Action: Select option 14
+Input: 14
+Input: my_library_backup
+
+Expected Output:
+- "✓ Library data saved to my_library_backup.csv"
+- Note: .csv extension added automatically!
+
+Test 3: Save with full filename
+Action: Select option 14
+Input: 14
+Input: final_backup.csv
+
+Expected Output:
+- "✓ Library data saved to final_backup.csv"
+
+Test 4: Verify files were created
+Command: ls *.csv (or dir *.csv on Windows)
+
+Expected Output:
+- catalog_data.csv
+- my_library_backup.csv
+- final_backup.csv
+- All backup files present!
+
+Test 5: Make changes and save
+Action: Select option 1 (Add Book)
+[Add a book with catalog #999]
+Action: Select option 14 (Save Data)
+Input: 14
+Input: [Press Enter]
+
+Expected Output:
+- New book added
+- Data saved successfully
+
+Test 6: Exit and restart to verify
+Action: Select option 0 (Exit)
+Command: python main.py
+Action: Select option 6 (Search by Catalog Number)
+Input: 6
+Input: 999
+
+Expected Output:
+- Book with catalog #999 found!
+- Changes persisted successfully!
+
+================================================================================
+WORKFLOW 18: EXIT THE APPLICATION (Option 0)
+================================================================================
+
+⚠️ IMPORTANT: Save your work first!
+
+Step 1: Save any unsaved changes
+Action: Select option 14
+Input: 14
+Input: [Press Enter]
+
+Expected Output:
+- "✓ Library data saved to catalog_data.csv"
+
+Step 2: Exit the application
+Action: Select option 0
+Input: 0
+
+Expected Output:
+- "Thank you for using the Library Catalog System!"
+- "Goodbye!"
+- Application exits
+
+💡 TIP: Always save (option 14) before exiting (option 0) to keep your changes!

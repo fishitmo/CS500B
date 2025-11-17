@@ -1,0 +1,5 @@
+BOOK,999,Test Book,"Jan 1, 2023",PAPERBACK,Testing,Test Author
+MOVIE,888,Test Movie,"Jan 1, 2023",Action,BLU_RAY,Test Director,"Actor One, Actor Two",2023,
+PERIODICAL,777,Test Journal,"Jan 1, 2023",JOURNAL
+ARTICLE,Test Article 1,Author A,"Jan 1, 2023",777
+ARTICLE,Test Article 2,Author B,"Jan 2, 2023",777

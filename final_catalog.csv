@@ -1,0 +1,8 @@
+BOOK,111,Programming in C++ (2nd Edition),"Feb 2, 2023",PAPERBACK,Programming,Peter
+PERIODICAL,777,Nature 500(1),"Jan 1, 2024",JOURNAL
+ARTICLE,Climate Change Study,Dr. Smith,"Jan 1, 2024",777
+ARTICLE,Quantum Computing Breakthrough,Dr. Jones,"Jan 1, 2024",777
+PERIODICAL,331,Wall Street Journal 167(15),"Oct 23, 2023",JOURNAL
+PERIODICAL,332,Time 168(18),"Oct 26, 2023",MAGAZINE
+ARTICLE,Elon Musk's Struggle for the Future of AI 1. Unfortunately,Walter Isaacson,"Oct 26, 2023",332
+BOOK,999,Python Programming,"Jan 1, 2024",PAPERBACK,Programming,Alice
